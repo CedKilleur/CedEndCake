@@ -1,0 +1,10 @@
+{
+	"parent": "block/cake_slice6",
+	"textures": {
+        "particle": "cedendcake:blocks/cedcake_2",
+        "bottom": "cedendcake:blocks/cedcake_0",
+        "top": "cedendcake:blocks/cedcake_1",
+        "side": "cedendcake:blocks/cedcake_2",
+        "inside": "cedendcake:blocks/cedcake_3"
+    }
+}

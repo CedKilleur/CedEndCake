@@ -1,0 +1,9 @@
+{
+	"parent": "block/cake_uneaten",
+	"textures": {
+        "particle": "cedendcake:blocks/endcake_2",
+        "bottom": "cedendcake:blocks/endcake_0",
+        "top": "cedendcake:blocks/endcake_1",
+        "side": "cedendcake:blocks/endcake_2"
+    }
+}

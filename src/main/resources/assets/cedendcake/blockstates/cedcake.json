@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cedendcake:cedCake_full"
+  },
+  "variants": {
+    "bites": {
+      0: { "model": "cedendcake:cedCake_full" },
+      1: { "model": "cedendcake:cedCake_slice1" },
+      2: { "model": "cedendcake:cedCake_slice2" },
+      3: { "model": "cedendcake:cedCake_slice3" },
+      4: { "model": "cedendcake:cedCake_slice4" },
+      5: { "model": "cedendcake:cedCake_slice5" },
+      6: { "model": "cedendcake:cedCake_slice6" }
+    },
+    "inventory": {
+      "model": "cedendcake:cedCake"
+    }
+  }
+}
