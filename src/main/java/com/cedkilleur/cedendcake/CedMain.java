@@ -1,6 +1,7 @@
 package com.cedkilleur.cedendcake;
 
 import com.cedkilleur.cedendcake.block.CedCake;
+import com.cedkilleur.cedendcake.message.CedMessage;
 import com.cedkilleur.cedendcake.proxy.CommonProxy;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,7 +14,9 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid=CedMain.MODID, name=CedMain.MODNAME, version=CedMain.VERSION, acceptedMinecraftVersions = CedMain.MCVERSION, useMetadata = true)
 public class CedMain {
@@ -44,6 +47,8 @@ public class CedMain {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		CedMain.network = NetworkRegistry.INSTANCE.newSimpleChannel("CedUC");
+		CedMain.network.registerMessage(CedMessage.Handler.class, CedMessage.class, 0, Side.SERVER);
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		eatCakeWhenFull = config.getBoolean("CanEatWhenFull","CedCake", true, "Set to true to enable eating the cake when saturation is full.");
 		if (config.hasChanged()) {

@@ -1,10 +1,13 @@
 # eclipse
 bin
+libs
 *.launch
 .settings
 .metadata
 .classpath
 .project
+workspace.bat
+build.bat
 
 # idea
 out
