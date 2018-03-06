@@ -4,6 +4,8 @@ import com.cedkilleur.cedendcake.CedMain;
 import com.cedkilleur.cedendcake.message.CedMessage;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.DimensionType;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
@@ -38,8 +40,12 @@ public class EventHandler {
 	public void onPlayerClone(PlayerEvent.Clone e) {
 		if (fromEnd  && (e.getEntity() instanceof EntityPlayer) && !e.isWasDeath()) {
 			fromEnd = false;
+			//e.getEntity().changeDimension(66);
+			//DimensionManager.initDimension(66);
+			DimensionType.getById(66).setLoadSpawn(true);
 			e.getEntity().changeDimension(66);
-			CedMain.network.sendToServer(new CedMessage(0,66));
+//			CedMain.network.sendToServer(new CedMessage(0,66));
+//			CedMain.network.sendToServer(new CedMessage(1,66));
 		}
 	}
 

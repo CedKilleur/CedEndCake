@@ -2,7 +2,10 @@ package com.cedkilleur.cedendcake.message;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.play.client.CPacketConfirmTeleport;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.network.DimensionMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -12,6 +15,9 @@ public class CedMessage implements IMessage {
 	
 	int value;
 	int dim;
+	
+	public CedMessage() {
+	}
 	
 	public CedMessage(int value, int dim) {
 		this.value = value;
@@ -39,7 +45,10 @@ public class CedMessage implements IMessage {
 			if (ctx.side == Side.SERVER) {
 				final EntityPlayerMP player = ctx.getServerHandler().player;
 				((WorldServer) player.world).addScheduledTask(() -> {
-					if ((message.value == 0)) { //Change dimension
+					if ((message.value == 0)) { //Init dimension
+						DimensionManager.initDimension(message.dim);
+					}
+					if ((message.value == 1)) { //Change dimension
 						player.changeDimension(message.dim);
 					}
 				});
